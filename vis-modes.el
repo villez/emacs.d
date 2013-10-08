@@ -1,16 +1,16 @@
 ;; mode-specific configs
 
-
 ;; hooks
 
 ;; Markdown mode
 (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
 
-;; common hook for all code modes
+;; common config for all code modes
 (add-hook 'vis-code-modes-hook
-	  (lambda() 
+	  (lambda()
+	    (set (make-local-variable 'indent-tabs-mode) 'nil)
 	    (add-hook 'before-save-hook 'delete-trailing-whitespace nil t)
-	    (define-key (current-local-map) (kbd "RET") 'reindent-then-newline-and-indent)
+	    (define-key (current-local-map) (kbd "RET") 'newline-and-indent)
 	    (linum-mode t)
 	    (setq linum-format "%d")))
 
@@ -23,11 +23,8 @@
 (add-hook 'c-mode-common-hook
 	  (lambda() (run-hooks 'vis-code-modes-hook)))
 
-;;;
-;;; Ruby Mode
-;;;
+;; Ruby Mode
 (defun vis-ruby-mode-common-hook ()
-  (set (make-local-variable 'indent-tabs-mode) 'nil)
   (set (make-local-variable 'tab-width) 2)
   )
 
@@ -36,11 +33,10 @@
 	  (lambda() (run-hooks 'vis-code-modes-hook)))
 
 
-;;; RHTML mode for ERB etc
+;; RHTML mode for ERB etc
 (require 'rhtml-mode)
 (add-hook 'rhtml-mode-hook 'turn-off-auto-fill)
-
-;;; 
+ 
 ;;; XHTML mode
 (add-hook 'html-mode 'turn-off-auto-fill)
 
@@ -70,6 +66,14 @@
 ;; Scala Mode 2
 (require 'scala-mode2)
 (add-hook 'scala-mode2-hook
+	  (lambda() (run-hooks 'vis-code-modes-hook)))
+
+;; shell scripts
+(add-hook 'sh-mode-hook
+	  (lambda() (run-hooks 'vis-code-modes-hook)))
+
+;; Emacs Lisp
+(add-hook 'emacs-lisp-mode-hook
 	  (lambda() (run-hooks 'vis-code-modes-hook)))
 
 
