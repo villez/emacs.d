@@ -1,0 +1,10 @@
+*~
+.#*
+backups/
+auto-save-list/
+url/*
+elpa/
+elpa/
+custom.el
+private/
+
