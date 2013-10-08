@@ -2,79 +2,74 @@
 
 ;; hooks
 
-;; Markdown mode
+(setq default-major-mode 'text-mode)
+(remove-hook 'text-mode-hook 'turn-on-auto-fill)
+
+;; Markdown
 (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
 
 ;; common config for all code modes
-(add-hook 'vis-code-modes-hook
-	  (lambda()
-	    (set (make-local-variable 'indent-tabs-mode) 'nil)
-	    (add-hook 'before-save-hook 'delete-trailing-whitespace nil t)
-	    (define-key (current-local-map) (kbd "RET") 'newline-and-indent)
-	    (linum-mode t)
-	    (setq linum-format "%d")))
-
-;; C mode
-(defun vis-c-mode-common-hook ()
-  (c-set-style "Stroustrup")
-  (setq indent-tabs-mode nil))
-
-(add-hook 'c-mode-common-hook 'vis-c-mode-common-hook)
-(add-hook 'c-mode-common-hook
-	  (lambda() (run-hooks 'vis-code-modes-hook)))
-
-;; Ruby Mode
-(defun vis-ruby-mode-common-hook ()
-  (set (make-local-variable 'tab-width) 2)
-  )
-
-(add-hook 'ruby-mode-hook 'vis-ruby-mode-common-hook)  
-(add-hook 'ruby-mode-hook
-	  (lambda() (run-hooks 'vis-code-modes-hook)))
-
-
-;; RHTML mode for ERB etc
-(require 'rhtml-mode)
-(add-hook 'rhtml-mode-hook 'turn-off-auto-fill)
- 
-;;; XHTML mode
-(add-hook 'html-mode 'turn-off-auto-fill)
-
-;;; CoffeeScript Mode
-(require 'coffee-mode)
-(defun vis-coffee-mode-common-hook ()
+(defun vis-code-modes-common-hook ()
   (set (make-local-variable 'indent-tabs-mode) 'nil)
-  (set (make-local-variable 'tab-width) 2))
+  (add-hook 'before-save-hook 'delete-trailing-whitespace nil t)
+  (define-key (current-local-map) (kbd "RET") 'reindent-then-newline-and-indent)
+  (linum-mode t)
+  (turn-off-auto-fill)
+  (setq linum-format "%d"))
 
-(add-hook 'coffee-mode-hook 'vis-coffee-mode-common-hook)
-(add-hook 'coffee-mode-hook 
-	  (lambda() (run-hooks 'vis-code-modes-hook)))
 
-;;; Perl Mode
-;;; (defalias 'perl-mode 'cperl-mode) - should move to this...
-(add-hook 'perl-mode-hook
-	  (lambda() (run-hooks 'vis-code-modes-hook)))
+;; C, C++
+(defun vis-c-mode-hook ()
+  (c-set-style "Stroustrup"))
+(add-hook 'c-mode-common-hook 'vis-code-modes-common-hook)
+(add-hook 'c-mode-common-hook 'vis-c-mode-hook)
 
-;; Python Mode
-(add-hook 'python-mode-hook
-	  (lambda() (run-hooks 'vis-code-modes-hook)))
 
-;; Java Mode
-(add-hook 'java-mode-hook
-	  (lambda() (run-hooks 'vis-code-modes-hook)))
+;; Ruby
+(setq ruby-indent-level 2)
+(add-hook 'ruby-mode-hook 'vis-code-modes-common-hook)
 
-;; Scala Mode 2
+
+;; RHTML - for ERB etc
+(require 'rhtml-mode)
+(add-hook 'rhtml-mode-hook 'vis-code-modes-common-hook)
+
+;; HTML
+(add-hook 'html-mode 'vis-code-modes-common-hook)
+
+;; JavaScript
+(setq js-indent-level 4)
+(add-hook 'js-mode-hook 'vis-code-modes-common-hook)
+
+;; CoffeeScript
+(require 'coffee-mode)
+(setq coffee-tab-width 2)
+(add-hook 'coffee-mode-hook 'vis-code-modes-common-hook)
+
+;; CPerl
+(defalias 'perl-mode 'cperl-mode)
+(add-hook 'perl-mode-hook 'vis-code-modes-common-hook)
+
+;; Python
+(add-hook 'python-mode-hook 'vis-code-modes-common-hook)
+
+;; Java
+(add-hook 'java-mode-hook 'vis-code-modes-common-hook)
+
+;; Scala
 (require 'scala-mode2)
-(add-hook 'scala-mode2-hook
-	  (lambda() (run-hooks 'vis-code-modes-hook)))
+(add-hook 'scala-mode2-hook 'vis-code-modes-common-hook)
 
 ;; shell scripts
-(add-hook 'sh-mode-hook
-	  (lambda() (run-hooks 'vis-code-modes-hook)))
+(add-hook 'sh-mode-hook 'vis-code-modes-common-hook)
 
 ;; Emacs Lisp
-(add-hook 'emacs-lisp-mode-hook
-	  (lambda() (run-hooks 'vis-code-modes-hook)))
+(add-hook 'emacs-lisp-mode-hook 'vis-code-modes-common-hook)
+
+;; CSS & SCSS
+(setq css-indent-offset 4)
+(add-hook 'css-mode-hook 'vis-code-modes-common-hook)
+(add-hook 'scss-mode-hook 'vis-code-modes-common-hook)
 
 
 ;;; automodes
@@ -95,7 +90,7 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
-(add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))

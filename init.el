@@ -48,6 +48,7 @@
 	   haml-mode
 	   markdown-mode
 	   php-mode
+	   scss-mode
 	   yaml-mode))
 	 (when (not (package-installed-p required-pkg))
 	   (package-install required-pkg)))

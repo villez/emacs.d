@@ -3,12 +3,9 @@
 (setq auto-save-default nil)
 (setq electric-pair-mode t)
 
-(setq default-major-mode 'text-mode)
-(remove-hook 'text-mode-hook 'turn-on-auto-fill)
-
-;; this allows closing an emacsclient-opened buffer with 
+;; this allows closing an emacsclient-opened buffer with
 ;; the C-x k instead of having to do C-x #
-(add-hook 'server-switch-hook 
+(add-hook 'server-switch-hook
 	  (lambda ()
 	    (local-set-key (kbd "C-x k") '(lambda ()
 					    (interactive)
