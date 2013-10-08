@@ -1,23 +1,23 @@
-;; mode-specific config
-;;
+;; mode-specific configs
+
 
 ;; hooks
 
 ;; Markdown mode
 (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
 
-;;; MOVE linum-mode to global
-;;; common hook for all code modes
+;; common hook for all code modes
 (add-hook 'vis-code-modes-hook
-	  (lambda() (linum-mode t)
-	    (setq linum-format " %d")))
+	  (lambda() 
+	    (add-hook 'before-save-hook 'delete-trailing-whitespace nil t)
+	    (define-key (current-local-map) (kbd "RET") 'reindent-then-newline-and-indent)
+	    (linum-mode t)
+	    (setq linum-format "%d")))
 
-;;; C mode
+;; C mode
 (defun vis-c-mode-common-hook ()
   (c-set-style "Stroustrup")
-  (setq indent-tabs-mode nil)
-  (define-key c-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
-  )
+  (setq indent-tabs-mode nil))
 
 (add-hook 'c-mode-common-hook 'vis-c-mode-common-hook)
 (add-hook 'c-mode-common-hook
@@ -29,7 +29,6 @@
 (defun vis-ruby-mode-common-hook ()
   (set (make-local-variable 'indent-tabs-mode) 'nil)
   (set (make-local-variable 'tab-width) 2)
-  (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
   )
 
 (add-hook 'ruby-mode-hook 'vis-ruby-mode-common-hook)  
@@ -46,6 +45,7 @@
 (add-hook 'html-mode 'turn-off-auto-fill)
 
 ;;; CoffeeScript Mode
+(require 'coffee-mode)
 (defun vis-coffee-mode-common-hook ()
   (set (make-local-variable 'indent-tabs-mode) 'nil)
   (set (make-local-variable 'tab-width) 2))
@@ -89,7 +89,7 @@
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
-;(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))

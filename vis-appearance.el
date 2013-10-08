@@ -9,6 +9,7 @@
 (display-time)
 (blink-cursor-mode -1)
 (tool-bar-mode -1)
+
 (set-variable 'font-lock-maximum-decoration t)
 
 (provide 'vis-appearance)
