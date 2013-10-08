@@ -1,14 +1,14 @@
 ;; text expander style macros
 
-(defun text-insert-date()
+(defun vis-text-insert-date()
   (interactive)
   (insert (format-time-string "%Y-%m-%d")))
 
-(defun text-insert-time()
+(defun vis-text-insert-time()
   (interactive)
   (insert (format-time-string "%R")))
 
-(defun text-insert-datetime ()
+(defun vis-text-insert-datetime ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d %R")))
 
