@@ -14,8 +14,7 @@
   (add-hook 'before-save-hook 'delete-trailing-whitespace nil t)
   (define-key (current-local-map) (kbd "RET") 'reindent-then-newline-and-indent)
   (linum-mode t)
-  (turn-off-auto-fill)
-  (setq linum-format "%d"))
+  (turn-off-auto-fill))
 
 
 ;; C, C++

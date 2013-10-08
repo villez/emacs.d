@@ -1,22 +1,21 @@
-;;; tomorrow-theme.el --- custom theme for faces
-
-;;; Tomorrow Theme
+;; Customized Tomorrow Theme ("vis-tomorrow-theme")
 ;;
 ;; Originally by Chris Kempson https://github.com/ChrisKempson/Tomorrow-Theme
 ;; Ported to GNU Emacs by Chris Charles
 ;; Ported to GNU Emacs 24's built-in theme system by Jim Myhrberg (@jimeh)
-;;
-;; customized by Ville Siltanen 
+;; customized by Ville Siltanen
 
 (deftheme vis-tomorrow
   "A Pastel Coloured Theme")
 
 (let (
-      (background "#fdf8e5")   ; default: #ffffff 
+      (background "#fdf8e9")   ; default was: #ffffff
       (current-line "#e9efff")
+      (modeline-bg "#d0d0d0")
+      (linum-bg "#e7e7f0")
       (selection "#c5cce9")
       (foreground "#4d4d4c")
-      (comment "#8e908c")
+      (comment "#7e807c")
       (cursor "#aeafad")
       (red "#c82829")
       (orange "#f5871f")
@@ -31,9 +30,9 @@
 
    ;; Built-in stuff (Emacs 23)
    `(default ((t (:background ,background :foreground ,foreground))))
-;   `(fringe ((t (:background ,current-line))))
+   `(fringe ((t (:background ,background))))
    `(minibuffer-prompt ((t (:foreground ,blue))))
-;   `(mode-line ((t (:background ,current-line :foreground ,foreground))))
+   `(mode-line ((t (:background ,modeline-bg :foreground ,foreground))))
    `(region ((t (:background ,selection))))
 
    ;; Font-lock stuff
@@ -51,7 +50,7 @@
    `(hl-line ((t (:background ,current-line))))
 
    ;; linum-mode
-   `(linum ((t (:background ,current-line :foreground ,foreground))))
+   `(linum ((t (:background ,linum-bg :foreground ,foreground))))
 
    ;; org-mode
    `(org-date ((t (:foreground ,purple))))
@@ -75,4 +74,3 @@
      [unspecified ,background ,red ,green ,yellow ,blue ,purple ,blue ,foreground])))
 
 (provide-theme 'vis-tomorrow)
-

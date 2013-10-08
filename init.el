@@ -1,5 +1,5 @@
 ;; init.el
-;; 
+;;
 ;; (c) 2013 Ville Siltanen
 
 
@@ -44,7 +44,6 @@
 
 (dolist (required-pkg
 	 '(coffee-mode
-	   color-theme
 	   haml-mode
 	   markdown-mode
 	   php-mode
