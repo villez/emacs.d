@@ -12,15 +12,16 @@
 (set-fringe-mode '(4 . 0))
 (set-variable 'font-lock-maximum-decoration t)
 
-(defun linum-format-func (line)
+;; custom line number formatter:
+;;   calculate the width of the largest line number & create
+;;   a format string based on that which right-justifies the line #
+(defun vis-linum-format-func (line)
   (let ((w (length
             (number-to-string (count-lines (point-min) (point-max))))))
-    (concat
-     (propertize (make-string (- w (length (number-to-string line))) ? )
-                 'face 'linum)
-     (propertize (number-to-string line) 'face 'linum)
-     (propertize " " 'face 'linum))))
+    (propertize
+     (format (concat (string ?%) (number-to-string w) "d ") line)
+     'face 'linum)))
 
-(setq linum-format 'linum-format-func)
+(setq linum-format 'vis-linum-format-func)
 
 (provide 'vis-appearance)
