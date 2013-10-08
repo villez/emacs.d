@@ -9,17 +9,17 @@
   "A Pastel Coloured Theme")
 
 (let (
-      (background "#fdf8e9")   ; default was: #ffffff
+      (background "#fdf8e9")
       (current-line "#e9efff")
       (modeline-bg "#d0d0d0")
       (linum-bg "#e7e7f0")
       (selection "#c5cce9")
       (foreground "#4d4d4c")
-      (comment "#7e807c")
-      (cursor "#aeafad")
+      (comment "#6c5050")
+      (cursor "#2f2f2f")
       (red "#c82829")
       (orange "#f5871f")
-      (yellow "#daa700") ; default was: #eab700
+      (yellow "#daa700")
       (green "#718c00")
       (aqua "#3e999f")
       (blue "#4271ae")
@@ -34,6 +34,7 @@
    `(minibuffer-prompt ((t (:foreground ,blue))))
    `(mode-line ((t (:background ,modeline-bg :foreground ,foreground))))
    `(region ((t (:background ,selection))))
+   `(cursor ((t (:background ,cursor :foreground ,background))))
 
    ;; Font-lock stuff
    `(font-lock-comment-face ((t (:foreground ,comment))))
