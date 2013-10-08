@@ -19,7 +19,7 @@
       (cursor "#aeafad")
       (red "#c82829")
       (orange "#f5871f")
-      (yellow "#eab700")
+      (yellow "#daa700") ; default was: #eab700
       (green "#718c00")
       (aqua "#3e999f")
       (blue "#4271ae")
