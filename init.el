@@ -32,6 +32,7 @@
 
 ; set up and update package repositories
 (setq package-user-dir (concat vis-emacs-config-dir "elpa"))
+(require 'package)
 (setq package-archives
       '(("melpa" . "http://melpa/milkbox.net/packages/")
         ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -41,20 +42,28 @@
 (when (esk-online?)
   (unless package-archive-contents (package-refresh-contents)))
 
-; set up and load all the config modules
-(setq vis-config-modules
-      '(vis-basic-settings
-	vis-os-settings
-	vis-keybindings
-	vis-appearance
-	vis-color-theme
-	vis-defun
-	vis-insert-macros
-	vis-modes
-	))
+(dolist (required-pkg
+	 '(coffee-mode
+	   color-theme
+	   haml-mode
+	   markdown-mode
+	   php-mode
+	   yaml-mode))
+	 (when (not (package-installed-p required-pkg))
+	   (package-install required-pkg)))
 
-(dolist (file vis-config-modules)
-  (require file))
+; set up and load all config modules
+(dolist (module
+	 '(vis-basic-settings
+	   vis-os-settings
+	   vis-keybindings
+	   vis-appearance
+	   vis-color-theme
+	   vis-defun
+	   vis-insert-macros
+	   vis-modes))
+  (require module))
+
 
 ; load private stuff
 (when (file-exists-p vis-private-dir)
