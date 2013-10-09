@@ -77,4 +77,11 @@
   (dotimes (n arg)
     (yank)))
 
+
+(defun vis-indent-buffer ()
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+
+
 (provide 'vis-defun)
