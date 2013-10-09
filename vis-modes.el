@@ -1,12 +1,14 @@
 ;; mode-specific configs
 
-;; hooks
-
 (setq default-major-mode 'text-mode)
 (remove-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; Markdown
 (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
+
+(defun add-hooks (modes func)
+  (dolist (mode modes)
+    (add-hook (intern (concat (symbol-name mode) "-mode-hook")) func)))
 
 ;; common config for all code modes
 (defun vis-code-modes-common-hook ()
@@ -16,59 +18,42 @@
   (linum-mode t)
   (turn-off-auto-fill))
 
+(setq code-modes
+ '(c ruby rhtml html js coffee perl python java sh emacs-lisp css scss))
+(add-hooks code-modes 'vis-code-modes-common-hook)
 
 ;; C, C++
 (defun vis-c-mode-hook ()
   (c-set-style "Stroustrup"))
-(add-hook 'c-mode-common-hook 'vis-code-modes-common-hook)
 (add-hook 'c-mode-common-hook 'vis-c-mode-hook)
-
 
 ;; Ruby
 (setq ruby-indent-level 2)
-(add-hook 'ruby-mode-hook 'vis-code-modes-common-hook)
-
 
 ;; RHTML - for ERB etc
 (require 'rhtml-mode)
-(add-hook 'rhtml-mode-hook 'vis-code-modes-common-hook)
-
-;; HTML
-(add-hook 'html-mode 'vis-code-modes-common-hook)
 
 ;; JavaScript
 (setq js-indent-level 4)
-(add-hook 'js-mode-hook 'vis-code-modes-common-hook)
 
 ;; CoffeeScript
 (require 'coffee-mode)
 (setq coffee-tab-width 2)
-(add-hook 'coffee-mode-hook 'vis-code-modes-common-hook)
 
 ;; CPerl
 (defalias 'perl-mode 'cperl-mode)
-(add-hook 'perl-mode-hook 'vis-code-modes-common-hook)
-
-;; Python
-(add-hook 'python-mode-hook 'vis-code-modes-common-hook)
-
-;; Java
-(add-hook 'java-mode-hook 'vis-code-modes-common-hook)
 
 ;; Scala
 (require 'scala-mode2)
 (add-hook 'scala-mode2-hook 'vis-code-modes-common-hook)
 
-;; shell scripts
-(add-hook 'sh-mode-hook 'vis-code-modes-common-hook)
-
-;; Emacs Lisp
-(add-hook 'emacs-lisp-mode-hook 'vis-code-modes-common-hook)
-
 ;; CSS & SCSS
 (setq css-indent-offset 4)
-(add-hook 'css-mode-hook 'vis-code-modes-common-hook)
-(add-hook 'scss-mode-hook 'vis-code-modes-common-hook)
+
+;; currently no mode-specific configurations but here as placeholder,
+;; these are the other programming modes in use:
+;; HTML, Python, Java, shell scripts, Emacs Lisp
+
 
 
 ;;; automodes
