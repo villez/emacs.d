@@ -6,12 +6,13 @@
 ;; customized by Ville Siltanen
 
 (deftheme vis-tomorrow
-  "A Pastel Coloured Theme")
+  "Customized Tomorrow Theme")
 
 (let (
       (background "#fdf8e9")
       (current-line "#e9efff")
       (modeline-bg "#d0d0d0")
+      (modeline-fg "#2a2a2a")
       (linum-bg "#e7e7f0")
       (selection "#c5cce9")
       (foreground "#4d4d4c")
@@ -32,7 +33,7 @@
    `(default ((t (:background ,background :foreground ,foreground))))
    `(fringe ((t (:background ,background))))
    `(minibuffer-prompt ((t (:foreground ,blue))))
-   `(mode-line ((t (:background ,modeline-bg :foreground ,foreground))))
+   `(mode-line ((t (:background ,modeline-bg :foreground ,modeline-fg))))
    `(region ((t (:background ,selection))))
    `(cursor ((t (:background ,cursor :foreground ,background))))
 
