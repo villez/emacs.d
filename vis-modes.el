@@ -13,7 +13,6 @@
 ;; common config for all code modes
 (defun vis-code-modes-common-hook ()
   (set (make-local-variable 'indent-tabs-mode) 'nil)
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
   (define-key (current-local-map) (kbd "RET") 'reindent-then-newline-and-indent)
   (linum-mode t)
   (turn-off-auto-fill))
