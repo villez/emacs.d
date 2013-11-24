@@ -9,6 +9,7 @@
 ;; shortcuts to own defuns - see vis-defun.el
 (global-set-key (kbd "C-c a") 'vis-copy-whole-buffer)
 (global-set-key (kbd "C-c c") 'vis-copy-this-line)
+(global-set-key (kbd "C-c C-c") 'vis-copy-this-line)
 (global-set-key (kbd "C-c d") 'vis-text-insert-date)
 (global-set-key (kbd "C-c 2") 'vis-dup-line)
 (global-set-key (kbd "C-c k") 'vis-kill-this-line)
