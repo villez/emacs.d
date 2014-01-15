@@ -3,6 +3,7 @@
 ;; shortcuts to built-in functions
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer) ; I typo C-x b like this *all* the time
 (global-set-key (kbd "C-c f") 'auto-fill-mode)
+(global-set-key (kbd "C-c g") 'list-matching-lines)
 (global-set-key (kbd "C-c n") 'comment-region)
 (global-set-key (kbd "C-c m") 'uncomment-region)
 
