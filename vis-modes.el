@@ -5,6 +5,10 @@
 
 ;; Markdown
 (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
+(add-hook 'markdown-mode-hook
+          (lambda ()
+            (local-unset-key (kbd "M-<left>"))     ; don't want these promotion/
+            (local-unset-key (kbd "M-<right>"))))  ; demotion bindings
 
 (defun add-hooks (modes func)
   (dolist (mode modes)
