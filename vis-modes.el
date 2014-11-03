@@ -22,7 +22,7 @@
   (turn-off-auto-fill))
 
 (setq code-modes
- '(c ruby rhtml html js coffee perl python java sh emacs-lisp css scss))
+ '(c ruby rhtml html js coffee perl python java sh emacs-lisp css scss haskell))
 (add-hooks code-modes 'vis-code-modes-common-hook)
 
 ;; C, C++
@@ -82,6 +82,7 @@
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))
+(add-to-list 'auto-mode-alist '("\\.hs\\'" . haskell-mode))
 
 
 (provide 'vis-modes)
