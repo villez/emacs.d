@@ -54,10 +54,12 @@
 (setq css-indent-offset 4)
 (setq scss-compile-at-save nil)
 
+;; Haskell
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
 ;; currently no mode-specific configurations but here as placeholder,
 ;; these are the other programming modes in use:
 ;; HTML, Python, Java, shell scripts, Emacs Lisp
-
 
 
 ;;; automodes
