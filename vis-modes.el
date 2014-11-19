@@ -10,7 +10,7 @@
             (local-unset-key (kbd "M-<left>"))     ; don't want these promotion/
             (local-unset-key (kbd "M-<right>"))))  ; demotion bindings
 
-(defun add-hooks (modes func)
+(defun vis-add-hooks (modes func)
   (dolist (mode modes)
     (add-hook (intern (concat (symbol-name mode) "-mode-hook")) func)))
 
@@ -21,9 +21,9 @@
   (linum-mode t)
   (turn-off-auto-fill))
 
-(setq code-modes
+(setq vis-code-modes
  '(c ruby rhtml html js coffee perl python java sh emacs-lisp css scss haskell))
-(add-hooks code-modes 'vis-code-modes-common-hook)
+(vis-add-hooks vis-code-modes 'vis-code-modes-common-hook)
 
 ;; C, C++
 (defun vis-c-mode-hook ()
