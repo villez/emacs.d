@@ -49,7 +49,9 @@
 	   php-mode
 	   scss-mode
 	   yaml-mode
-           haskell-mode))
+           haskell-mode
+           clojure-mode
+           clojure-mode-extra-font-locking))
 	 (when (not (package-installed-p required-pkg))
 	   (package-install required-pkg)))
 

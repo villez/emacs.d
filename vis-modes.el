@@ -22,7 +22,7 @@
   (turn-off-auto-fill))
 
 (setq vis-code-modes
- '(c ruby rhtml html js coffee perl python java sh emacs-lisp css scss haskell))
+ '(c ruby rhtml html js coffee perl python java sh emacs-lisp css scss haskell clojure))
 (vis-add-hooks vis-code-modes 'vis-code-modes-common-hook)
 
 ;; C, C++
@@ -57,9 +57,12 @@
 ;; Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
+;; Clojure
+(require 'clojure-mode-extra-font-locking)
+
 ;; currently no mode-specific configurations but here as placeholder,
 ;; these are the other programming modes in use:
-;; HTML, Python, Java, shell scripts, Emacs Lisp
+;; HTML, Python, Java, shell, Emacs Lisp
 
 
 ;;; automodes
