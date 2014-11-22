@@ -34,7 +34,7 @@
 (setq package-user-dir (concat vis-emacs-config-dir "elpa"))
 (require 'package)
 (setq package-archives
-      '(("melpa" . "http://melpa/milkbox.net/packages/")
+      '(("melpa" . "http://melpa.org/packages/")
         ("marmalade" . "http://marmalade-repo.org/packages/")
         ("elpa" . "http://tromey.com/elpa/")
 	("gnu" . "http://elpa.gnu.org/packages/")))
