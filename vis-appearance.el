@@ -16,6 +16,7 @@
 ;;   calculate the width of the largest line number & create
 ;;   a format string based on that which right-justifies the line #
 (defun vis-linum-format-func (line)
+  "Implements custom line number formatting for linum-mode"
   (let ((w (length
             (number-to-string (count-lines (point-min) (point-max))))))
     (propertize

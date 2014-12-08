@@ -4,14 +4,17 @@
 ;; inserting current date, time, or both
 
 (defun vis-text-insert-date()
+  "insert the current date in yyyy-mm-dd format"
   (interactive)
   (insert (format-time-string "%Y-%m-%d")))
 
 (defun vis-text-insert-time()
+  "insert the current time in 24H format"
   (interactive)
   (insert (format-time-string "%R")))
 
 (defun vis-text-insert-datetime ()
+  "insert the current date and time"
   (interactive)
   (insert (format-time-string "%Y-%m-%d %R")))
 
@@ -25,6 +28,10 @@
 ;; [end of buffer]
  
 (defun vis-c-insert-include-guard()
+  "insert a C/C++ include guard
+    #ifndef FOO_H
+    #define FOO_H
+    #endif"
   (interactive)
   (let ((guard-str
          (concat

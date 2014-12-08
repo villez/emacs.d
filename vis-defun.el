@@ -79,6 +79,7 @@
 
 
 (defun vis-indent-buffer ()
+  "reindent the whole buffer"
   (interactive)
   (indent-region (point-min) (point-max)))
 
