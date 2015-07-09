@@ -21,9 +21,15 @@
   (linum-mode t)
   (turn-off-auto-fill))
 
+(defun vis-remove-ws-on-save ()
+  (add-hook 'before-save-hook 'delete-trailing-whitespace nil 'local))
+
 (setq vis-code-modes
  '(c ruby rhtml html js coffee perl python java sh emacs-lisp css scss haskell clojure))
+
 (vis-add-hooks vis-code-modes 'vis-code-modes-common-hook)
+(vis-add-hooks vis-code-modes 'vis-remove-ws-on-save)
+
 
 ;; C, C++
 (defun vis-c-mode-hook ()
