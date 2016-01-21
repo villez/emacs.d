@@ -1,7 +1,8 @@
 ;; appearance settings
 ;;
 (setq initial-frame-alist (quote ((menu-bar-lines . 1) (width . 110) (height . 52))))
-(setq visible-bell t)
+(setq visible-bell nil)            ;; visual bell doesn't work in OS X El Capitan yet, so
+(setq ring-bell-function 'ignore)  ;; disable it and turn off the beep, until Emacs fix available
 (setq column-number-mode t)
 (setq inhibit-startup-message t)
 (setq display-time-24hr-format t)
