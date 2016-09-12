@@ -43,7 +43,7 @@
 (require 'rhtml-mode)
 
 ;; JavaScript
-(setq js-indent-level 4)
+(setq js-indent-level 2)
 
 ;; CoffeeScript
 (require 'coffee-mode)
