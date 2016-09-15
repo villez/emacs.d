@@ -5,11 +5,12 @@
 
 ;; set up directories
 (defvar vis-emacs-config-dir (file-name-directory load-file-name))
+(defvar vis-lisp-dir (concat vis-emacs-config-dir "lisp"))
 (defvar vis-private-dir (concat vis-emacs-config-dir "private"))
 (defvar vis-vendor-dir (concat vis-emacs-config-dir "vendor"))
 
 ;; setting up load path
-(add-to-list 'load-path vis-emacs-config-dir)
+(add-to-list 'load-path vis-lisp-dir)
 (add-to-list 'load-path vis-private-dir)
 (add-to-list 'load-path vis-vendor-dir)
 (dolist
