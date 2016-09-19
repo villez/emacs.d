@@ -25,7 +25,7 @@
   (add-hook 'before-save-hook 'delete-trailing-whitespace nil 'local))
 
 (setq vis-code-modes
- '(c ruby rhtml html js coffee perl python java sh emacs-lisp css scss haskell clojure))
+ '(c ruby rhtml html js2 perl python java sh emacs-lisp css scss haskell clojure))
 
 (vis-add-hooks vis-code-modes 'vis-code-modes-common-hook)
 (vis-add-hooks vis-code-modes 'vis-remove-ws-on-save)
@@ -45,16 +45,8 @@
 ;; JavaScript
 (setq js-indent-level 2)
 
-;; CoffeeScript
-(require 'coffee-mode)
-(setq coffee-tab-width 2)
-
 ;; CPerl
 (defalias 'perl-mode 'cperl-mode)
-
-;; Scala
-(require 'scala-mode2)
-(add-hook 'scala-mode2-hook 'vis-code-modes-common-hook)
 
 ;; CSS & SCSS
 (setq css-indent-offset 4)
@@ -78,7 +70,7 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 
-; ruby etc
+; programming languages
 (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
@@ -90,7 +82,7 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
-
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))

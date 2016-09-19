@@ -1,6 +1,6 @@
 ;; init.el
 ;;
-;; (c) 2013 Ville Siltanen
+;; (c) 2016 Ville Siltanen
 
 
 ;; set up directories
@@ -44,15 +44,14 @@
   (unless package-archive-contents (package-refresh-contents)))
 
 (dolist (required-pkg
-	 '(coffee-mode
-	   haml-mode
-	   markdown-mode
+	 '(markdown-mode
 	   php-mode
 	   scss-mode
 	   yaml-mode
            haskell-mode
            clojure-mode
-           clojure-mode-extra-font-locking))
+           clojure-mode-extra-font-locking
+           js2-mode))
 	 (when (not (package-installed-p required-pkg))
 	   (package-install required-pkg)))
 
