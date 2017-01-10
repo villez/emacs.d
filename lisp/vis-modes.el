@@ -25,7 +25,7 @@
   (add-hook 'before-save-hook 'delete-trailing-whitespace nil 'local))
 
 (setq vis-code-modes
- '(c ruby rhtml html js2 perl python java sh emacs-lisp css scss haskell clojure))
+ '(c ruby rhtml html js2 perl python java sh emacs-lisp css haskell clojure))
 
 (vis-add-hooks vis-code-modes 'vis-code-modes-common-hook)
 (vis-add-hooks vis-code-modes 'vis-remove-ws-on-save)
@@ -50,7 +50,6 @@
 
 ;; CSS & SCSS
 (setq css-indent-offset 4)
-(setq scss-compile-at-save nil)
 
 ;; Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
@@ -83,7 +82,6 @@
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))
